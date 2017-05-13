@@ -1,0 +1,128 @@
+\documentclass[a5paper,10pt]{article}
+
+\usepackage{cmap}
+\usepackage[a5paper,margin=1.5cm,noheadfoot]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{blindtext}
+\usepackage{mathtools}
+
+\author{Евгений Гужихин}
+\title{Дополнительные главы дискретной математики, 2 курс, 2 семестр ФПМК}
+\date{\today}
+
+\begin{document}
+
+	\maketitle
+	\tableofcontents{}
+	\newpage
+
+	\section{1 лекция}
+
+	\section{2 лекция}
+		\subsection{}
+			\paragraph{}
+				Автомат называется приведенным, если любые его состояния отличимы, то есть неэквивалентны.
+				Если состояние $q_i$ не эквивалентно $q_j$, то $\exists$ некая последовательность $\beta: \phi(\beta_{q_i})=\phi(\beta_{q_j})$.
+				2 автомата $a_1$ и $a_2$ называются эквивалентными, если для $\forall$ состояния 1 автомата $\exists$ эквивалентное состояние 2 автомата.
+				Задача минимизация числа состояний в (полностью определенном) конечном автомате сводится к построению для него приведенного автомата, то есть автомата с минимальным числом состояний.
+				Задачу сведем к поиску разбиений состояний заданного автомата А на классы эквивалентностей.
+
+			\paragraph{}
+				Алгоритм поиска разбиения состояний на классы эквивалентностей:
+				(Будем считать, что автомат $A$ задан таблицами переходов-выходов
+				$ A<X,Q,Y,\Phi,\Psi> \rightarrow \hat A $)
+				Анализируя таблицу выходов, разобьем множество q на подмножество след. образом:
+					В подмножество входит состояние, для которых столбцы таблицы выходов одинаковы.
+					$P_1$
+					...
+					$P_k$
+					Выбераем очередной блок из $P_k$ и состояние $q_i, q_j$ относим к одному и тому же блоку в разбиении $P_{k+1}$, если для $\forall$ $x \in X, \Psi(x,q_i),\Psi(x,q_j) \in P_k$
+					...
+					$P_s$ - невозможно дальше изменить. $P_s$ - искомое разбиение на классы эквивалентностей
+
+			\paragraph{}
+				Пример: \\
+				$\Psi$
+				\begin{tabular}{*{9}{c}}
+					XQ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+					\hline
+					a & 4 & 5 & 3 & 5 & 7 & 1 & 5 & 3 \\
+					b & 2 & 1 & 5 & 8 & 2 & 3 & 3 & 5 \\
+					c & & & & & & & & \\
+				\end{tabular} \\
+
+				$\Phi$
+				\begin{tabular}{*{9}{c}}
+					XQ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+					\hline
+					a & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+					b & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 \\
+					c & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+				\end{tabular} \\
+
+				\begin{enumerate}
+					\item $P_1: {1,5}, {2,3,8}, {4,6,7}$
+					\item $P_2: \overbrace{\{1,5\}}^{q^{\sim}_1}, \overbrace{\{2,3,8\}}^{q^{\sim}_2}, \overbrace{\{2\}}^{q^{\sim}_3}, \overbrace{\{3,8\}}^{q^{\sim}_4}$
+					\item $P_3=P_2$
+				\end{enumerate}
+
+				\begin{tabular}{*{5}{c}}
+					& $\tilde q_1$ & $\tilde q_2$ & $\tilde q_3$ & $\tilde q_4$ \\
+					\hline
+					a & $\tilde q_4$ & $\tilde q_1$ & $\tilde q_3$ & $\tilde q_4$ \\
+					b & $\tilde q_2$ & $\tilde q_1$ & $\tilde q_1$ & $\tilde q_3$ \\
+					c & $\tilde q_1$ & $\tilde q_4$ & $\tilde q_4$ & $\tilde q_4$ \\
+				\end{tabular}
+
+				\begin{tabular}{*{5}{c}}
+					& $\tilde q_1$ & $\tilde q_2$ & $\tilde q_3$ & $\tilde q_4$ \\
+					\hline
+					a & 1 & 0 & 0 & 1 \\
+					b & 0 & 1 & 1 & 0 \\
+					c & 1 & 0 & 0 & 0 \\
+				\end{tabular}
+
+		\subsection{Минимизация состояний частичных автоматов}
+			\paragraph{}
+				В частичных автоматах не все входные последовательности являются допустимыми.
+				\begin{equation}
+					\Psi: X*xQ->Q, \\
+					\Phi: X*xQ->Y, \\
+					\alpha \in X*, \alpha=\beta x. \\
+				\end{equation}
+				(``!'' - значение определено)
+				$!\Psi(\alpha,q)=\Psi(\beta,x,q) \Leftrightarrow !\Psi(\beta,q) or !\Psi(x,\Psi(\beta,q)) \\
+				!\Phi(\alpha,q)=!\Phi(\beta,x,q,) \Leftrightarrow \Phi(\beta,q) or !\Phi(x,\Psi(\beta,q))$
+
+				$ !f(a) $ - значение функции на наборе $a$ определено
+				$q \in Q, \phi_q, X^{*} \rightarrow Q$
+				Рассмотрим 2 частичные функции $f,g$ и будем говорить, что функция $f$ продолжает функцию $g$, если выполняется условие:
+				\begin{enumerate}
+					\item Если $ !g(a) \rightarrow !f(a) $
+					\item $ g(a) = f(a) $
+				\end{enumerate}
+				Рассмотрим некоторое $ \phi_q X^{*} \rightarrow Q $
+
+				Покрытие $S$ - подмножество состояний $Q$ такие, что $\cup S_i = Q$
+				Подмножество покрытия называют блоками 
+				Покрытие называется сохраняемым, если в для каждого блока $\in S$ выполняются условия:
+				\begin{enumerate}
+					\item $ \forall s_i^1, s_i^2 !\psi(x,s_i^1) \forall x, \\
+					 !\psi(x,s_i^1) \psi(x,s_i^1),\psi(x,s_i^2) \subseteq Q $
+				\end{enumerate}
+				Сохряняемые покрытия называются правильными, если $!\phi(x,s_i^1), !\phi(x,s_i^2) \Rightarrow \phi(x,s_i^1)=\phi(x,s_i^1)$.
+				Теорема: Для автомата $ A \rightarrow A^\prime_m \exists $ сохраняемо правильное покрытие минимальной мощности.
+
+				Состояния $q_i,q_j$ будем называть совместимыми, если $!\phi(\alpha,q_i),!\phi(\alpha,q_j) \Rightarrow \phi(\alpha,q_i)=\phi(\alpha,q_j)$
+				Подмножество состояний из $q$ будем называть совместимым подмножеством, если $\forall$ пара его состояний совместима
+				Подмножество состояний из $q$ будем называть несовместимым подмножеством, если $\forall$ пара его состояний несовместима
+
+				Для пары состояний построим цепь $q_i,q_j$:
+				$(q_i,q_j) \in C_{q_i,q_j},$
+				Состоянием $q_i,q_j$ назовем 1-совместимыми, если $\forall x !\phi(x,q_i), !\phi(x,q_j) \Rightarrow !\phi(x,q_i)=!\phi(x,q_j)$
+				Цепь - совокупность состяний из множества $Q$
+				Теорема: $q_i,q_j$ совместимы, если в построенной цепи $C_{q_i,q_j}$ все состояний 1-совместимы
+
+\end{document}
