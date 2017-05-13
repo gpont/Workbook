@@ -1,0 +1,170 @@
+\documentclass[a5paper,10pt]{article}
+
+\usepackage{cmap}
+\usepackage[a5paper,margin=1.5cm,noheadfoot]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{blindtext}
+\usepackage{mathtools}
+
+\author{Дмитрий Гутман, Евгений Гужихин}
+\title{Алгоритмы решения контрольных по дифференциальным уравнениям, 2 курс, 1 семестр ФПМК}
+\date{\today}
+
+\begin{document}
+
+	\maketitle
+
+	\tableofcontents{}
+	\newpage
+
+	\section{I контрольная работа}
+		\subsection{Однородное уравнение}
+			\label{Homogeneous}
+			\begin{enumerate}
+				\item 
+					$$ y\prime=f(\frac{x}{y}) \eqno(1.1.1) $$ или $$ M(x,y)dx+N(x,y)dy=0 \eqno(1.1.2) $$,
+					где $ M(x,y) $ и $ N(x,y) $ — однородные(т.е $ f(kx) = k^mf(x) $) функции одной и той же степени.
+					\begin{enumerate}
+						\item Сделать замену $ y = tx $;
+						\item Решить, как уравнение с разделяющимися переменными.
+					\end{enumerate}
+
+				\item $$ y\prime=f\left(\cfrac{a_1x + b_1y + c_1}{ax + by + c}\right) \eqno(1.2) $$
+					\begin{enumerate}
+						\item если
+						\begin{equation}
+							\cfrac{a_1}{a_2}=\cfrac{b_1}{b_2}\neq\cfrac{c_1}{c_2}\nonumber,
+						\end{equation}
+						то $ z = a_1x + b_1y $ (или $ z = a_2x + b_2y $ или $ z = a_1x + b_1y + c_1 $ или $ z = a_2x + b_2y + c_2 $) и решить как уравнение с разделяющимися переменными.
+
+						\item если
+						\begin{equation}
+							\cfrac{a_1}{a_2}=\cfrac{b_1}{b_2}=\cfrac{c_1}{c_2}\nonumber,
+						\end{equation}
+						то переменные уже можно разделить.
+					\end{enumerate}
+			\end{enumerate}
+
+		\subsection{Уравнение Бернулли}
+			\label{Bernulli}
+			$$ y\prime + a(x)y = b(x)y^n, (n\neq1) \eqno(2) $$
+			\begin{enumerate}
+				\item Обе части разделить на $ y^n $;
+				\item Сделать замену $ z = y^{1-n} $, получится линейное дифференциальное уравнение I порядка \eqref{Linear}
+			\end{enumerate}
+
+		\subsection{Уравнение в полных дифференциалах}
+			\label{Full_Diff}
+			$$ F\prime_xdx + F\prime_ydy = 0 \eqno(3) $$
+			\begin{enumerate}
+				\item Доказать, что уравнение является уравнением в полных дифференциалах: $ F\prime\prime_{xy} = F\prime\prime_{yx} $;
+				\item Восстановить $ F\prime_x \implies F = \int F\prime_xdx $, где $ C = \varphi(y) $ — некоторая пока неизвестная функция;
+				\item Продифференцировать $ F $ по $ y $ $ (\varphi(y) \implies \varphi\prime_y(y)) $;
+				\item Приравнять $ F\prime_y $ к результату выше и найти значение $ \varphi(y) $;
+				\item Подставить $ \varphi(y) $ в $ F $ из пункта 2.
+			\end{enumerate}
+
+		\subsection{Замена $ y = z^m $}
+			\begin{enumerate}
+				\item Сделать замену $ y = z^m $;
+				\item Найти $ m $ (сумма степеней всех слагаемых слева и справа должна совпадать).
+			\end{enumerate}
+
+		\subsection{Множитель $ \mu $}
+
+		\subsection{Уравнение Риккати}
+			\label{Riccati}
+			$$ y\prime + a(x)y + b(x)y^2 = c(x) \eqno(3) $$
+			\begin{enumerate}
+				\item Подбором найти частное решение $ y_1 $;
+				\item Сделать замену $ y = y_1 + u $, получится уравнение Бернулли \eqref{Bernulli};
+				\item Полученное уравнение можно привести к линейному \eqref{Linear} заменой $ z = \frac{1}{u} $.
+			\end{enumerate}
+
+		\subsection{Линейное дифференциальное уравнение I порядка}
+			\label{Linear}
+			$$ y\prime + a(x)y = f(x) \eqno(4) $$
+			\begin{enumerate}
+				\item Метод интегрирующего множителя
+					\begin{enumerate}
+						\item Найти интегрирующий множитель $ u(x) = e^{\int a(x)dx} $;
+						\item $ y = \frac{\int u(x)f(x)dx + C}{u(x)} $.
+					\end{enumerate}
+				\item Метод вариации произвольно постоянной
+					\begin{enumerate}
+						\item Решить соответствующее однородное уравнение
+						\item Сделать замену $ C $ на $ C(x) $, где $ C(x)-? $;
+						\item Найти $ C(x) $;
+						\item Подставить $ C(x) $ в исходное неоднородное. 
+					\end{enumerate}
+			\end{enumerate}
+		
+		\newpage
+
+	\section{II Контрольная работа}
+		\subsection{Уравнение, неразрешенное относительно производной}
+			$$ F(x,y,y\prime) = 0 $$
+			Два способа решения:
+			\begin{enumerate}
+				\item Привести к $ y\prime = f_i(x,y), i=1,2,... $. Получится одно или несколько уравнений такого вида, каждое нужно решить;
+				\item Метод введения параметра:
+				\begin{enumerate}
+					\item Ввести параметр $ p = y\prime = \frac{dy}{dx} $, получим $ y = f(x,p) $;
+					\item Взять полный дифференциал от обоих частей и заменить $ dy = pdx $, получим $ M(x,p)dx+N(x,p)dp=0 $.
+				\end{enumerate}
+				Если решение найдено в виде $ x=\phi(p) $, то получим $ x=\phi(p), y=f(\phi(p),p) $.
+				\item $ y(x) = xy\prime+\psi(y\prime) $ - \underline{Уравнение Клеро}: Замена: $ y\prime:=p $.
+				\item $ y(x) = x\phi(y\prime)+\psi(y\prime) $ - \underline{Уравнение Лагранжа}: $ y\prime:=p $.
+			\end{enumerate}
+
+		\subsection{}
+			$$ F(x,y,y\prime,...,y^{(n)}) = 0 $$
+			Если:
+			\begin{enumerate}
+				\item Нет $ y,y\prime,...,y^{(k-1)} \Rightarrow y^{(k)} := z(x) $
+				\item Нет $ x \Rightarrow y\prime:=p(y), y\prime\prime:=p\prime*p, ... $
+				\item $ \frac{d}{dx}\Phi(x, y, ..., y(n-1))=0 \Rightarrow (x, y, y\prime, ..., y^{(n-1)}) = C_1 \Rightarrow ... $
+				\item Однородное относительно $ y,y\prime,...,y^{(n)} $ (т.е. не меняется при замене $ y := ky, y\prime:=ky\prime, ...) \Rightarrow y\prime:=yz(x) $
+				\item Обобщенно-однородное (т.е. не меняется при замене $ x:=kx, y:=k^m y, y\prime:=k^{m-1}y\prime, y\prime\prime:=k^{m-2}y\prime\prime, ...\Rightarrow x:=e^t, y:=z(t)e^{mt}, m - ? $
+			\end{enumerate}
+
+		\subsection{Линейное неоднородное уравнение с постоянными коэффициентами}
+			$$ \sum\limits_{i=0}^n a_i y^{(n-i)} = \phi(x): y_n(x) = y_h(x)+\hat y(x) $$, где $ y_n $ - решение неоднородного, $ y_h $ - решение соответствующего однородного, $ \hat y $ - частное решение
+			\begin{enumerate}
+				\item Решить соответствующее однородное $ y_h(x) - ? $: Замена $ y:=e^{kx} $
+				\item Найти частные решения $ \hat y(x) - ? $
+				\begin{enumerate}
+					\item Метод Неопределенных Коэффициентов
+					\begin{enumerate}
+						\item Если $ \phi(x) =e^{px}(A_0x^s+...+A_s) \Rightarrow $
+						\begin{enumerate}
+							\item Если $p$ - не корень характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(B_0x^s+...+B_s) $, где $B_i$ - неопределенные коэффициенты
+							\item Если $p$ - корень характеристического уравнения кратности $d \Rightarrow \hat y(x) = x^\alpha e^{px}(B_0x^s+...+B_s)$, где $B_i$ - неопределенные коэффициенты
+						\end{enumerate}
+						\item Если $ \phi(x) = e^{px}(Q_s(x)cos(qx)+P_s(x)sin(qx)) $, где один из многочленов $Q_s$, $P_s$ имеет степень $s$, а другой $\leq s \Rightarrow$
+						\begin{enumerate}
+							\item Если $p\pm iq$ - не корни характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $
+							\item Если piq - корни характеристического уравнения $ \Rightarrow \hat y(x) = x^\alpha e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $, где $Q_s$, $P_s$ - многочлены степени $s$ с неопределенными коэффициентами
+						\end{enumerate}
+					\end{enumerate}
+					\item Метод вариации произвольных постоянных: решить СЛУ:
+						\begin{equation*}
+							\begin{cases}
+								\sum\limits^n_{i=0}C\prime_i y_i = 0,\\
+								\sum\limits^n_{i=0}C\prime_i y\prime_i = 0,\\
+								...,\\
+								\sum\limits^n_{i=0}C\prime_i y^{n-2}_i = 0,\\
+								\sum\limits^n_{i=0}C\prime_i y^{n-1}_i = \phi(x).
+							\end{cases}
+						\end{equation*}
+				\end{enumerate}
+			\end{enumerate}
+
+		\subsection{Уравнение Эйлера}
+			$$ x^ny^{(n)} + a_{n-1}x^{n-1}y^{(n-1)} + ... + a_1xy\prime + a_0y = 0 $$, где коэффициенты $ a_{n-1},...,a_1,a_0 $ — постоянные действительные числа.
+			Если функция $y(x)$ — решение уравнения Эйлера, то функция $Cy(x)$ тоже является решением уравнения.
+			Уравнение Эйлера заменой $ x = e^t $ сводится к линейному однородному уравнению с постоянными коэффициентами.
+
+\end{document}
