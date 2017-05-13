@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\usepackage{cmap}
+\usepackage[a5paper,margin=1.5cm,noheadfoot]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{blindtext}
+\usepackage{mathtools}
+
+\begin{document}
+
+	\section{Математический анализ(3 семестр, $\S$1.5 Вычисление определенного интеграла, часть II Замена переменной, Теорема 2)}
+
+	\paragraph{\underline{Теорема:}}
+		Пусть:
+		\begin{enumerate}
+			\item $f(x)$ интегрируема на $[a,b]$;
+			\item $\phi(t)$ определена и монотонна на $[\alpha,\beta]$, $\phi(\alpha)=a$, $\phi(\beta)=b$;
+			\item $\exists$ непрерывная $\phi^\prime(t)$ на $[\alpha,\beta]$.
+		\end{enumerate}
+		Тогда $\int\limits^b_a f(x)dx = \int\limits^\alpha_\beta f(\phi(t))\phi^\prime(t)dt$.
+	\paragraph{\underline{Доказательство:}}
+		\begin{enumerate}
+
+			\item Разобьем $[a,b]$ на части $\alpha<t_1<...<t_{n-1}<\beta$. Введем $\Delta t_i=t_{i+1}-t_i$, $\lambda=\max|\Delta t_i|$, произвольное $\tau_i \in [t_i,t_{i+1}]$.
+
+			\item Составим интегральную сумму для $\int\limits^\alpha_\beta f(\phi(t))\phi^\prime(t)dt: \\
+			\sigma=\sum\limits^{n-1}_{i=0}f(\phi(\tau_i))\phi^\prime(\tau_i)\Delta t_i$. Точки $x_i=\phi(t_i), i=\overline{0,n-1}$ разобьют $[a,b]$ на части.
+
+			\item При $\lambda \rightarrow 0$ (все $\Delta t_i \rightarrow 0$), $\phi\uparrow: \Delta x_i=\phi(t_{i+1})-\phi(t_i)=\omega$ - колебание $\phi(t)$ на $[t_i,t_{i+1}]$, т.к. по условию $\phi(t)$ непрерывно на $[\alpha,\beta] \Rightarrow $ (по Т. Кантора) $\phi(t)$ равномерно непрерывна на $[\alpha,\beta] \Rightarrow$ все $\omega_i \rightarrow_{\lambda \rightarrow 0} 0$, $i=\overline{0,n-1}$, т.е. $\lambda \rightarrow 0 \Rightarrow \max\limits_i \Delta x_i \rightarrow 0$, причем по ф-ле Лагранжа $\Delta x_i=\phi(t_{i+1})-\phi(t_i)=\phi\prime(\xi)\Delta t_i$.
+
+			\item Тогда при $\xi_i = \phi(\tau_i)$ интегральная сумма $\sigma\prime$ для $\int\limits^b_af(x)dx: \\
+			\sigma\prime=\sum\limits^{n-1}_{i=0}f(\phi(\tau_i))\phi\prime(\hat\tau)\Delta t_i = \sum\limits^{n-1}_{i=0}f(\xi_i)\Delta x_i$.
+
+			\item Покажем, что $\lim\limits_{\lambda \rightarrow 0}\sigma=\lim\limits_{\lambda \rightarrow 0}\sigma\prime$, т.е. $\forall \epsilon>0 \exists\delta>0 \forall\lambda<\delta |\sigma-\sigma\prime|<\epsilon L(\beta-\alpha), |f(x)|\leq L$ на $[a,b]$.
+
+			\item Так как $\phi\prime(t)$ равномерно непрерывна (по Т. Кантора) на $[\alpha,\beta] \Rightarrow \left|\phi\prime(\hat\tau_i)-\phi\prime(\tau_i)\right|\leq\omega_i<\epsilon, \forall i = \overline{0,n-1},$ а $\left|f(\phi(\tau_i))\right| \leq L \Rightarrow \\
+			\left|\sigma\prime-\sigma\right| = \left|\sum\limits^{n-1}_{i=0} f(\phi(\tau_i))\left|(\phi\prime(\hat\tau)-\phi(\tau_i))\right|\Delta t_i\right| \leq \sum\limits^{n-1}_{i=0}\left|f(\phi(\tau_i))\right|\left|\phi\prime(\hat\tau_i)-\phi\prime(\tau_i)\right|\Delta t_i \leq \epsilon L(\beta-\alpha) \Rightarrow \lim\limits_{\lambda \rightarrow 0}(\sigma\prime-\sigma) = 0$. \fbox{Ч.Т.Д}
+
+		\end{enumerate}
+
+\end{document}
