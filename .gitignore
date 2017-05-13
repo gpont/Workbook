@@ -1,0 +1,9 @@
+*.sublime-workspace
+*.sublime-project
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.pdf
+*.toc
