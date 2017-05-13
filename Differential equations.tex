@@ -7,6 +7,7 @@
 \usepackage[english,russian]{babel}
 \usepackage{blindtext}
 \usepackage{mathtools}
+\usepackage{framed}
 
 \author{Дмитрий Гутман, Евгений Гужихин}
 \title{Алгоритмы решения контрольных по дифференциальным уравнениям, 2 курс, 1 семестр ФПМК}
@@ -34,16 +35,16 @@
 				\item $$ y\prime=f\left(\cfrac{a_1x + b_1y + c_1}{ax + by + c}\right) \eqno(1.2) $$
 					\begin{enumerate}
 						\item если
-						\begin{equation}
-							\cfrac{a_1}{a_2}=\cfrac{b_1}{b_2}\neq\cfrac{c_1}{c_2}\nonumber,
-						\end{equation}
-						то $ z = a_1x + b_1y $ (или $ z = a_2x + b_2y $ или $ z = a_1x + b_1y + c_1 $ или $ z = a_2x + b_2y + c_2 $) и решить как уравнение с разделяющимися переменными.
+							\begin{equation}
+								\cfrac{a_1}{a_2}=\cfrac{b_1}{b_2}\neq\cfrac{c_1}{c_2}\nonumber,
+							\end{equation}
+							то $ z = a_1x + b_1y $ (или $ z = a_2x + b_2y $ или $ z = a_1x + b_1y + c_1 $ или $ z = a_2x + b_2y + c_2 $) и решить как уравнение с разделяющимися переменными.
 
 						\item если
-						\begin{equation}
-							\cfrac{a_1}{a_2}=\cfrac{b_1}{b_2}=\cfrac{c_1}{c_2}\nonumber,
-						\end{equation}
-						то переменные уже можно разделить.
+							\begin{equation}
+								\cfrac{a_1}{a_2}=\cfrac{b_1}{b_2}=\cfrac{c_1}{c_2}\nonumber,
+							\end{equation}
+							то переменные уже можно разделить.
 					\end{enumerate}
 			\end{enumerate}
 
@@ -89,9 +90,10 @@
 			\begin{enumerate}
 				\item Метод интегрирующего множителя
 					\begin{enumerate}
-						\item Найти интегрирующий множитель $ u(x) = e^{\int a(x)dx} $;
+						\item Найти интегрирующий множитель $ u(x) = e^{\int a(x)dx} $;						
 						\item $ y = \frac{\int u(x)f(x)dx + C}{u(x)} $.
 					\end{enumerate}
+
 				\item Метод вариации произвольно постоянной
 					\begin{enumerate}
 						\item Решить соответствующее однородное уравнение
@@ -100,7 +102,7 @@
 						\item Подставить $ C(x) $ в исходное неоднородное. 
 					\end{enumerate}
 			\end{enumerate}
-		
+
 		\newpage
 
 	\section{II Контрольная работа}
@@ -109,11 +111,12 @@
 			Два способа решения:
 			\begin{enumerate}
 				\item Привести к $ y\prime = f_i(x,y), i=1,2,... $. Получится одно или несколько уравнений такого вида, каждое нужно решить;
+				
 				\item Метод введения параметра:
-				\begin{enumerate}
-					\item Ввести параметр $ p = y\prime = \frac{dy}{dx} $, получим $ y = f(x,p) $;
-					\item Взять полный дифференциал от обоих частей и заменить $ dy = pdx $, получим $ M(x,p)dx+N(x,p)dp=0 $.
-				\end{enumerate}
+					\begin{enumerate}
+						\item Ввести параметр $ p = y\prime = \frac{dy}{dx} $, получим $ y = f(x,p) $;
+						\item Взять полный дифференциал от обоих частей и заменить $ dy = pdx $, получим $ M(x,p)dx+N(x,p)dp=0 $.
+					\end{enumerate}
 				Если решение найдено в виде $ x=\phi(p) $, то получим $ x=\phi(p), y=f(\phi(p),p) $.
 				\item $ y(x) = xy\prime+\psi(y\prime) $ - \underline{Уравнение Клеро}: Замена: $ y\prime:=p $.
 				\item $ y(x) = x\phi(y\prime)+\psi(y\prime) $ - \underline{Уравнение Лагранжа}: $ y\prime:=p $.
@@ -124,47 +127,105 @@
 			Если:
 			\begin{enumerate}
 				\item Нет $ y,y\prime,...,y^{(k-1)} \Rightarrow y^{(k)} := z(x) $
+				
 				\item Нет $ x \Rightarrow y\prime:=p(y), y\prime\prime:=p\prime*p, ... $
+				
 				\item $ \frac{d}{dx}\Phi(x, y, ..., y(n-1))=0 \Rightarrow (x, y, y\prime, ..., y^{(n-1)}) = C_1 \Rightarrow ... $
+				
 				\item Однородное относительно $ y,y\prime,...,y^{(n)} $ (т.е. не меняется при замене $ y := ky, y\prime:=ky\prime, ...) \Rightarrow y\prime:=yz(x) $
+				
 				\item Обобщенно-однородное (т.е. не меняется при замене $ x:=kx, y:=k^m y, y\prime:=k^{m-1}y\prime, y\prime\prime:=k^{m-2}y\prime\prime, ...\Rightarrow x:=e^t, y:=z(t)e^{mt}, m - ? $
 			\end{enumerate}
 
 		\subsection{Линейное неоднородное уравнение с постоянными коэффициентами}
+			\label{LinearNonhomogeneous}
 			$$ \sum\limits_{i=0}^n a_i y^{(n-i)} = \phi(x): y_n(x) = y_h(x)+\hat y(x) $$, где $ y_n $ - решение неоднородного, $ y_h $ - решение соответствующего однородного, $ \hat y $ - частное решение
 			\begin{enumerate}
 				\item Решить соответствующее однородное $ y_h(x) - ? $: Замена $ y:=e^{kx} $
+
 				\item Найти частные решения $ \hat y(x) - ? $
-				\begin{enumerate}
-					\item Метод Неопределенных Коэффициентов
 					\begin{enumerate}
-						\item Если $ \phi(x) =e^{px}(A_0x^s+...+A_s) \Rightarrow $
-						\begin{enumerate}
-							\item Если $p$ - не корень характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(B_0x^s+...+B_s) $, где $B_i$ - неопределенные коэффициенты
-							\item Если $p$ - корень характеристического уравнения кратности $d \Rightarrow \hat y(x) = x^\alpha e^{px}(B_0x^s+...+B_s)$, где $B_i$ - неопределенные коэффициенты
-						\end{enumerate}
-						\item Если $ \phi(x) = e^{px}(Q_s(x)cos(qx)+P_s(x)sin(qx)) $, где один из многочленов $Q_s$, $P_s$ имеет степень $s$, а другой $\leq s \Rightarrow$
-						\begin{enumerate}
-							\item Если $p\pm iq$ - не корни характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $
-							\item Если piq - корни характеристического уравнения $ \Rightarrow \hat y(x) = x^\alpha e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $, где $Q_s$, $P_s$ - многочлены степени $s$ с неопределенными коэффициентами
-						\end{enumerate}
+						\item Метод Неопределенных Коэффициентов
+							\begin{enumerate}
+								\item Если $ \phi(x) =e^{px}(A_0x^s+...+A_s) \Rightarrow $
+								\begin{enumerate}
+									\item Если $p$ - не корень характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(B_0x^s+...+B_s) $, где $B_i$ - неопределенные коэффициенты
+									\item Если $p$ - корень характеристического уравнения кратности $d \Rightarrow \hat y(x) = x^\alpha e^{px}(B_0x^s+...+B_s)$, где $B_i$ - неопределенные коэффициенты
+								\end{enumerate}
+								\item Если $ \phi(x) = e^{px}(Q_s(x)cos(qx)+P_s(x)sin(qx)) $, где один из многочленов $Q_s$, $P_s$ имеет степень $s$, а другой $\leq s \Rightarrow$
+								\begin{enumerate}
+									\item Если $p\pm iq$ - не корни характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $
+									\item Если piq - корни характеристического уравнения $ \Rightarrow \hat y(x) = x^\alpha e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $, где $Q_s$, $P_s$ - многочлены степени $s$ с неопределенными коэффициентами
+								\end{enumerate}
+							\end{enumerate}
+
+						\item Метод вариации произвольных постоянных: решить СЛУ:
+							\begin{equation*}
+								\begin{cases}
+									\sum\limits^n_{i=0}C\prime_i y_i = 0,\\
+									\sum\limits^n_{i=0}C\prime_i y\prime_i = 0,\\
+									...,\\
+									\sum\limits^n_{i=0}C\prime_i y^{n-2}_i = 0,\\
+									\sum\limits^n_{i=0}C\prime_i y^{n-1}_i = \phi(x).
+								\end{cases}
+							\end{equation*}
 					\end{enumerate}
-					\item Метод вариации произвольных постоянных: решить СЛУ:
-						\begin{equation*}
-							\begin{cases}
-								\sum\limits^n_{i=0}C\prime_i y_i = 0,\\
-								\sum\limits^n_{i=0}C\prime_i y\prime_i = 0,\\
-								...,\\
-								\sum\limits^n_{i=0}C\prime_i y^{n-2}_i = 0,\\
-								\sum\limits^n_{i=0}C\prime_i y^{n-1}_i = \phi(x).
-							\end{cases}
-						\end{equation*}
-				\end{enumerate}
 			\end{enumerate}
 
 		\subsection{Уравнение Эйлера}
 			$$ x^ny^{(n)} + a_{n-1}x^{n-1}y^{(n-1)} + ... + a_1xy\prime + a_0y = 0 $$, где коэффициенты $ a_{n-1},...,a_1,a_0 $ — постоянные действительные числа.
 			Если функция $y(x)$ — решение уравнения Эйлера, то функция $Cy(x)$ тоже является решением уравнения.
-			Уравнение Эйлера заменой $ x = e^t $ сводится к линейному однородному уравнению с постоянными коэффициентами.
+			Уравнение Эйлера заменой $ x = e^t $ сводится к \underline{линейному однородному уравнению с постоянными коэффициентами} \ref{LinearNonhomogeneous}.
+
+		\newpage
+
+	\section{III контрольная работа}
+		\subsection{Краевые задачи}
+			$$ a_0(x)y\prime\prime + a_1(x)y\prime + a_2(x)y = f(x), \ x_0 \leq x \leq x_1 $$
+			$$ \alpha y\prime(x_0) + \beta y(x_0) = 0, \ \gamma y\prime(x_1) + \delta y(x_1) = 0 $$
+			\begin{enumerate}
+				\item Решение краевой задачи
+					\begin{enumerate}
+						\item Найти общее решение уравнения;
+						\item Подставить общее решение в краевые условия и определить значения произвольных постоянных, входящих в формулу общего решения.
+					\end{enumerate}
+
+				\begin{framed}
+					\underline{Функция Грина $ G(x,s) $} - функция, определенная при $ x_0 \leq x \leq x_1, x_0 < s < x_1 $, и при каждом фиксированном $ s \in [x_0,x_1] $, обладающая свойствами:
+					\begin{enumerate}
+						\item при $ x \neq s $ она удовлетворяет уравнению
+						$$ a_0(x)y\prime\prime + a_1(x)y\prime + a_2(x)y = f(x), \ x_0 \leq x \leq x_1; $$
+
+						\item при $ x = x_0 $ и $ x = x_1 $ она удовлетворяет заданным краевым условиям;
+
+						\item при $ x = s $ она непрерывна по $x$, а ее производная по $x$ имеет скачек, равный $ \frac{1}{a_0(s)} $, т.е.
+						$$ G(s+1,s) = G(s-0,s), G_x\prime\bigg|_{x=s+0} = G_x\prime\bigg|_{x=s-0}+\frac{1}{a_0(s)}. $$
+					\end{enumerate}
+				\end{framed}
+
+				\item Нахождение функции Грина:
+					\begin{enumerate}
+						\item Найти решения $ y_1(x), y_2(x) \neq 0 $, удовлетворяющих краевым условиям;
+						\item Если $ y_1(x) $ не удовлетворяет сразу 2 краевым условиям, то
+						\begin{equation*}
+							\exists G(x,s) = 
+							\begin{cases}
+								ay_1(x) \ (x_0 \leq x \leq s),\\
+								by_2(x) \ (s \leq x \leq x_1.
+							\end{cases}
+						\end{equation*}
+						Функции $a,b$ зависят от $s$ и определяются из требования, чтобы функция $G$ удовлетворяла условиям: $ by_2(s) = ay_1(s), by_2\prime(s) = ay_1\prime(s) + \frac{1}{a_0(s)} $.
+						\item Если $ \exists G $, то решение: $ y(x) = \int_{x_0}^{x_1} G(x,s)f(s)ds $.
+					\end{enumerate}
+			\end{enumerate}
+
+		\subsection{Решение неоднородной системы дифференциальных уравнений, заданными методами (1-ый для решения однородной, 2-ой - для получения общего решения неоднородной (МНК или вариация)}
+			\begin{enumerate}
+				\item Метод исключения
+				\item Метод Эйлера(при помощи характеристического уравнения)
+			\end{enumerate}
+
+		\subsection{Решение однородной системы матричным методом}
+
 
 \end{document}
