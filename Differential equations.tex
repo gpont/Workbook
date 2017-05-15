@@ -10,7 +10,7 @@
 \usepackage{framed}
 
 \author{Дмитрий Гутман, Евгений Гужихин}
-\title{Алгоритмы решения контрольных по дифференциальным уравнениям, 2 курс, 1 семестр ФПМК}
+\title{Алгоритмы решения контрольных по дифференциальным уравнениям, 2 курс, 1 и 2 семестр ФПМК}
 \date{\today}
 
 \begin{document}
@@ -122,7 +122,7 @@
 				\item $ y(x) = x\phi(y\prime)+\psi(y\prime) $ - \underline{Уравнение Лагранжа}: $ y\prime:=p $.
 			\end{enumerate}
 
-		\subsection{}
+		\subsection{Уравнение, неразрешенное относительно производной $n$-ого порядка}
 			$$ F(x,y,y\prime,...,y^{(n)}) = 0 $$
 			Если:
 			\begin{enumerate}
@@ -219,10 +219,69 @@
 					\end{enumerate}
 			\end{enumerate}
 
-		\subsection{Решение неоднородной системы дифференциальных уравнений, заданными методами (1-ый для решения однородной, 2-ой - для получения общего решения неоднородной (МНК или вариация)}
+		\subsection{Решение линейной неоднородной системы дифференциальных уравнений}
+			$$ \frac{dx_i}{dt} = x\prime_i = \sum\limits_{j=1}^n a_{ij}x_j(t) + f_i(t), \; i = 1,2,\ldots,n, $$
+			Или
+			$$ \mathbf{X}'\left( t \right) = A\mathbf{X}\left( t \right) + \mathbf{f}\left( t \right), $$
+			\begin{equation}
+				\mathbf{X}\left( t \right) = \left(
+					\begin{array}{*{20}{c}}
+						{{x_1}\left( t \right)}\\
+						{{x_2}\left( t \right)}\\
+						 \vdots \\
+						{{x_n}\left( t \right)}
+					\end{array}
+				\right), \;
+				\mathbf{f}\left( t \right) = \left(
+					\begin{array}{*{20}{c}}
+						{{f_1}\left( t \right)}\\
+						{{f_2}\left( t \right)}\\
+						 \vdots \\
+						{{f_n}\left( t \right)}
+					\end{array}
+				\right), \;
+				A = \left(
+					\begin{array}{*{20}{c}}
+						{{a_{11}}}&{{a_{12}}}& \vdots &{{a_{1n}}}\\
+						{{a_{21}}}&{{a_{22}}}& \vdots &{{a_{2n}}}\\
+						 \cdots & \cdots & \cdots & \cdots \\
+						{{a_{n1}}}&{{a_{n2}}}& \vdots &{{a_{nn}}}
+					\end{array}
+				\right),
+			\end{equation}
+			где $t$ - независимая переменная, $x_i(t)$ - неизвестные функции, $a_{ij}(i,j=1,\ldots,n)$ - постоянные коэффициенты, $f_i(t)$ - заданные функции. Функции $x_i(t)$, $f_i(t)$ и коэффициенты $a_{ij}$ могут принимать как действительные, так и комплексные значения. 
+			\begin{framed}
+				$ \mathbf{X}\left( t \right) = {\mathbf{X}_0}\left( t \right) + {\mathbf{X}_1}\left( t \right),$ где \par
+				$ \mathbf{X}_0(t) $ - общее решение соответствующей однородной системы \par
+				$ \mathbf{X}_1(t) $ - частное решения неоднородной системы.
+			\end{framed}
 			\begin{enumerate}
-				\item Метод исключения
-				\item Метод Эйлера(при помощи характеристического уравнения)
+				\item Метод исключения \par
+				(Удобно использовать для решения систем 2-го порядка.) Путем исключения неизвестных, система порядка $n$сводится к 1 уравнению порядка $n$ с 1 неизвестной функцией.
+
+				\item Метод Эйлера(при помощи характеристического уравнения) \par
+				\begin{enumerate}
+					\item Найти собственные значения $ \lambda_i $ из характеристического уравнение системы: $ \det \left( {A - \lambda I} \right) = 0 $;
+					
+					\item Найти собственные вектора из уравнения $ \left( {A - {\lambda _i}I} \right){\mathbf{V}_i} = \mathbf{0} $;
+
+					\item Решение: $ \mathbf{X}(t) = e^{\lambda t}\mathbf{V} $.
+					\begin{framed}
+						В случае $s_i = k_i = 1$, общее решение: 
+						\begin{equation}
+							\mathbf{X}(t) = \left(
+								\begin{array}{*{20}{c}}
+									{{x_1}\left( t \right)}\\
+									{{x_2}\left( t \right)}\\
+									 \vdots \\
+									{{x_n}\left( t \right)}
+								\end{array}
+							\right)
+							= \sum\limits_{i=1}^n C_ie^{\lambda_i}t\mathbf{V}_i,
+						\end{equation}
+						где $ C_i $ - произвольные константы, $s_i$ - геометрическая кратность $\lambda_i$ (число собственных векторов, ассоциированных с $\lambda_i$), $k_i$ - алгебраическая кратность $\lambda_i$, $ 0 < s_i \leq k_i $.
+					\end{framed}
+				\end{enumerate}
 			\end{enumerate}
 
 		\subsection{Решение однородной системы матричным методом}
