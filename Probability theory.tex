@@ -1,0 +1,56 @@
+\documentclass[a5paper,10pt]{article}
+
+\usepackage{cmap}
+\usepackage[a5paper,margin=1.5cm,noheadfoot]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{blindtext}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\author{Евгений Гужихин}
+\title{Теория вероятности, 2 курс, 2 семестр ФПМК}
+\date{\today}
+
+\begin{document}
+
+	\maketitle
+
+	\tableofcontents{}
+	\newpage
+
+	\section{Случайные события}
+		\subsection{Основные определения}
+			\begin{itemize}[label={}]
+				\item \textbf{Случайное событие} - любой исход опыта, который может либо произойти, либо не произойти.
+				\item \textbf{Достоверное событие $\Omega$} - событие, которое обязательно наступит.
+				\item \textbf{Невозможное событие $\varnothing$} - событие, которое заведомо не произойдет.
+				\item Два события \textbf{несовместны}, если появление одного из них исключает появление другого в том же опыте. В противном случае события \textbf{совместны}.
+				\item События $A_1,A_2,\ldots,A_n$ - \textbf{попарно-несовместные}, если $\forall$ 2 из них несовместны.
+				\item Несколько событий образуют \textbf{полную группу}, если они попарно-несовместны и в результате каждого опыта происходит одно и только одно из них.
+			\end{itemize}
+
+		\subsection{Действия над событиями}
+			\begin{itemize}[label={}]
+				\item \textbf{Сумма событий $A$ и $B$} - событие $C = A + B$, состоящее в наступлении хотя бы одного из них.
+				\item \textbf{Произведение событий $A$ и $B$} - событие $C = AB$, состоящее в совместном наступлении этих событий.
+				\item \textbf{Разность событий $A$ и $B$} - событие $C = A \backslash B$, происходящее тогда и только тогда, когда происходит событие $A$, но не происходит событие $B$.
+				\item \textbf{Противоположное событие $\overline{A}$} - событие, которое происходит тогда и только тогда, когда не происходит событие $A$.
+				\item \textbf{Событие $A$ влечет событие $B$ ($A \subseteq B$)}, если из того, что происходит событие $A$ следует, что происходит событие $B$.
+			\end{itemize}
+
+		\subsection{Алгебра событий}
+			\begin{itemize}[label={}]
+				\item \textbf{Пространство элементарных событий $\Omega$} - множество всех возможных взаимоисключающих исходов данного опыта.
+				\item \textbf{Случайное событие $A$} - $\forall$ подмножество множества $\Omega$.
+				\item \textbf{События, благоприятствующие событию $A$} - элементарные события, $\in A$.
+			\end{itemize}
+
+		\subsection{Аксиоматическое определение случайного события}
+		
+
+\end{document}	
