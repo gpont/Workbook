@@ -9,7 +9,7 @@
 \usepackage{mathtools}
 
 \author{Евгений Гужихин}
-\title{Дополнительные главы дискретной математики, 2 курс, 2 семестр ФПМК}
+\title{Дополнительные главы дискретной математики(конспект), 2 курс, 2 семестр ФПМК}
 \date{\today}
 
 \begin{document}
@@ -43,24 +43,30 @@
 					$P_s$ - невозможно дальше изменить. $P_s$ - искомое разбиение на классы эквивалентностей
 
 			\paragraph{}
-				Пример: \\
-				$\Psi$
-				\begin{tabular}{*{9}{c}}
-					XQ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-					\hline
-					a & 4 & 5 & 3 & 5 & 7 & 1 & 5 & 3 \\
-					b & 2 & 1 & 5 & 8 & 2 & 3 & 3 & 5 \\
-					c & & & & & & & & \\
-				\end{tabular} \\
+				\underline{Пример:} \\
+				\begin{table}[h]
+					\centering
+					\caption{$\Psi$:}
+					\begin{tabular}{*{9}{c}}
+						XQ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+						\hline
+						a & 4 & 5 & 3 & 5 & 7 & 1 & 5 & 3 \\
+						b & 2 & 1 & 5 & 8 & 2 & 3 & 3 & 5 \\
+						c & & & & & & & & \\
+					\end{tabular} \\
+				\end{table}
 
-				$\Phi$
-				\begin{tabular}{*{9}{c}}
-					XQ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-					\hline
-					a & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
-					b & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 \\
-					c & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
-				\end{tabular} \\
+				\begin{table}[h]
+					\centering
+					\caption{$\Phi$:}
+					\begin{tabular}{*{9}{c}}
+						XQ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+						\hline
+						a & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+						b & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 \\
+						c & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+					\end{tabular} \\
+				\end{table}
 
 				\begin{enumerate}
 					\item $P_1: {1,5}, {2,3,8}, {4,6,7}$
@@ -68,28 +74,34 @@
 					\item $P_3=P_2$
 				\end{enumerate}
 
-				\begin{tabular}{*{5}{c}}
-					& $\tilde q_1$ & $\tilde q_2$ & $\tilde q_3$ & $\tilde q_4$ \\
-					\hline
-					a & $\tilde q_4$ & $\tilde q_1$ & $\tilde q_3$ & $\tilde q_4$ \\
-					b & $\tilde q_2$ & $\tilde q_1$ & $\tilde q_1$ & $\tilde q_3$ \\
-					c & $\tilde q_1$ & $\tilde q_4$ & $\tilde q_4$ & $\tilde q_4$ \\
-				\end{tabular}
+				\begin{table}[h]
+					\centering
+					\begin{tabular}{*{5}{c}}
+						& $\tilde q_1$ & $\tilde q_2$ & $\tilde q_3$ & $\tilde q_4$ \\
+						\hline
+						a & $\tilde q_4$ & $\tilde q_1$ & $\tilde q_3$ & $\tilde q_4$ \\
+						b & $\tilde q_2$ & $\tilde q_1$ & $\tilde q_1$ & $\tilde q_3$ \\
+						c & $\tilde q_1$ & $\tilde q_4$ & $\tilde q_4$ & $\tilde q_4$ \\
+					\end{tabular}
+				\end{table}
 
-				\begin{tabular}{*{5}{c}}
-					& $\tilde q_1$ & $\tilde q_2$ & $\tilde q_3$ & $\tilde q_4$ \\
-					\hline
-					a & 1 & 0 & 0 & 1 \\
-					b & 0 & 1 & 1 & 0 \\
-					c & 1 & 0 & 0 & 0 \\
-				\end{tabular}
+				\begin{table}[h]
+					\centering
+					\begin{tabular}{*{5}{c}}
+						& $\tilde q_1$ & $\tilde q_2$ & $\tilde q_3$ & $\tilde q_4$ \\
+						\hline
+						a & 1 & 0 & 0 & 1 \\
+						b & 0 & 1 & 1 & 0 \\
+						c & 1 & 0 & 0 & 0 \\
+					\end{tabular}
+				\end{table}
 
 		\subsection{Минимизация состояний частичных автоматов}
 			\paragraph{}
 				В частичных автоматах не все входные последовательности являются допустимыми.
 				\begin{equation}
-					\Psi: X*xQ->Q, \\
-					\Phi: X*xQ->Y, \\
+					\Psi: X*xQ \to Q, \\
+					\Phi: X*xQ \to Y, \\
 					\alpha \in X*, \alpha=\beta x. \\
 				\end{equation}
 				(``!'' - значение определено)
