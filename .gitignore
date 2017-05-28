@@ -7,3 +7,6 @@
 *.synctex.gz
 *.pdf
 *.toc
+
+# macOS
+.DS_Store
