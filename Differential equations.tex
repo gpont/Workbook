@@ -24,7 +24,7 @@
 		\subsection{Однородное уравнение}
 			\label{Homogeneous}
 			\begin{enumerate}
-				\item 
+				\item
 					$$ y\prime=f(\frac{x}{y}) \eqno(1.1.1) $$ или $$ M(x,y)dx+N(x,y)dy=0 \eqno(1.1.2) $$,
 					где $ M(x,y) $ и $ N(x,y) $ — однородные (т.е $ f(kx) = k^mf(x) $, где $ m $ — степень функции) функции одной и той же степени.
 					\begin{enumerate}
@@ -111,7 +111,7 @@
 			Два способа решения:
 			\begin{enumerate}
 				\item Привести к $ y\prime = f_i(x,y), i=1,2,... $. Получится одно или несколько уравнений такого вида, каждое нужно решить;
-				
+
 				\item Метод введения параметра:
 					\begin{enumerate}
 						\item Ввести параметр $ p = y\prime = \frac{dy}{dx} $, получим $ y = f(x,p) $;
@@ -127,13 +127,13 @@
 			Если:
 			\begin{enumerate}
 				\item Нет $ y,y\prime,...,y^{(k-1)} \Rightarrow y^{(k)} := z(x) $
-				
+
 				\item Нет $ x \Rightarrow y\prime:=p(y), y\prime\prime:=p\prime*p, ... $
-				
+
 				\item $ \frac{d}{dx}\Phi(x, y, ..., y(n-1))=0 \Rightarrow (x, y, y\prime, ..., y^{(n-1)}) = C_1 \Rightarrow ... $
-				
+
 				\item Однородное относительно $ y,y\prime,...,y^{(n)} $ (т.е. не меняется при замене $ y := ky, y\prime:=ky\prime, ...) \Rightarrow y\prime:=yz(x) $
-				
+
 				\item Обобщенно-однородное (т.е. не меняется при замене $ x:=kx, y:=k^m y, y\prime:=k^{m-1}y\prime, y\prime\prime:=k^{m-2}y\prime\prime, ...\Rightarrow x:=e^t, y:=z(t)e^{mt}, m - ? $
 			\end{enumerate}
 
@@ -208,7 +208,7 @@
 						\item Найти решения $ y_1(x), y_2(x) \neq 0 $, удовлетворяющих краевым условиям;
 						\item Если $ y_1(x) $ не удовлетворяет сразу 2 краевым условиям, то
 						\begin{equation*}
-							\exists G(x,s) = 
+							\exists G(x,s) =
 							\begin{cases}
 								ay_1(x) \ (x_0 \leq x \leq s),\\
 								by_2(x) \ (s \leq x \leq x_1.
@@ -249,7 +249,7 @@
 					\end{array}
 				\right),
 			\end{equation}
-			где $t$ - независимая переменная, $x_i(t)$ - неизвестные функции, $a_{ij}(i,j=1,\ldots,n)$ - постоянные коэффициенты, $f_i(t)$ - заданные функции. Функции $x_i(t)$, $f_i(t)$ и коэффициенты $a_{ij}$ могут принимать как действительные, так и комплексные значения. 
+			где $t$ - независимая переменная, $x_i(t)$ - неизвестные функции, $a_{ij}(i,j=1,\ldots,n)$ - постоянные коэффициенты, $f_i(t)$ - заданные функции. Функции $x_i(t)$, $f_i(t)$ и коэффициенты $a_{ij}$ могут принимать как действительные, так и комплексные значения.
 			\begin{framed}
 				$ \mathbf{X}\left( t \right) = {\mathbf{X}_0}\left( t \right) + {\mathbf{X}_1}\left( t \right),$ где \par
 				$ \mathbf{X}_0(t) $ - общее решение соответствующей однородной системы \par
@@ -262,12 +262,12 @@
 				\item Метод Эйлера(при помощи характеристического уравнения) \par
 				\begin{enumerate}
 					\item Найти собственные значения $ \lambda_i $ из характеристического уравнение системы: $ \det \left( {A - \lambda I} \right) = 0 $;
-					
+
 					\item Найти собственные вектора из уравнения $ \left( {A - {\lambda _i}I} \right){\mathbf{V}_i} = \mathbf{0} $;
 
 					\item Решение: $ \mathbf{X}(t) = e^{\lambda t}\mathbf{V} $.
 					\begin{framed}
-						В случае $s_i = k_i = 1$, общее решение: 
+						В случае $s_i = k_i = 1$, общее решение:
 						\begin{equation}
 							\mathbf{X}(t) = \left(
 								\begin{array}{*{20}{c}}
