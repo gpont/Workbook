@@ -55,6 +55,25 @@
 				\item Обе части разделить на $ y^n $;
 				\item Сделать замену $ z = y^{1-n} $, получится линейное дифференциальное уравнение I порядка \eqref{Linear}
 			\end{enumerate}
+	
+			\subsubsection{Линейное дифференциальное уравнение I порядка}
+				\label{Linear}
+				$$ y\prime + a(x)y = f(x) \eqno(4) $$
+				\begin{enumerate}
+					\item Метод интегрирующего множителя
+						\begin{enumerate}
+							\item Найти интегрирующий множитель $ u(x) = e^{\int a(x)dx} $;
+							\item $ y = \frac{\int u(x)f(x)dx + C}{u(x)} $.
+						\end{enumerate}
+
+					\item Метод вариации произвольно постоянной
+						\begin{enumerate}
+							\item Решить соответствующее однородное уравнение
+							\item Сделать замену $ C $ на $ C(x) $, где $ C(x)-? $;
+							\item Найти $ C(x) $;
+							\item Подставить $ C(x) $ в исходное неоднородное.
+						\end{enumerate}
+				\end{enumerate}
 
 		\subsection{Уравнение в полных дифференциалах}
 			\label{Full_Diff}
@@ -82,25 +101,6 @@
 				\item Подбором найти частное решение $ y_1 $;
 				\item Сделать замену $ y = y_1 + u $, получится уравнение Бернулли \eqref{Bernulli};
 				\item Полученное уравнение можно привести к линейному \eqref{Linear} заменой $ z = \frac{1}{u} $.
-			\end{enumerate}
-
-		\subsection{Линейное дифференциальное уравнение I порядка}
-			\label{Linear}
-			$$ y\prime + a(x)y = f(x) \eqno(4) $$
-			\begin{enumerate}
-				\item Метод интегрирующего множителя
-					\begin{enumerate}
-						\item Найти интегрирующий множитель $ u(x) = e^{\int a(x)dx} $;						
-						\item $ y = \frac{\int u(x)f(x)dx + C}{u(x)} $.
-					\end{enumerate}
-
-				\item Метод вариации произвольно постоянной
-					\begin{enumerate}
-						\item Решить соответствующее однородное уравнение
-						\item Сделать замену $ C $ на $ C(x) $, где $ C(x)-? $;
-						\item Найти $ C(x) $;
-						\item Подставить $ C(x) $ в исходное неоднородное. 
-					\end{enumerate}
 			\end{enumerate}
 
 		\newpage
