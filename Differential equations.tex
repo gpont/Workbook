@@ -2,12 +2,26 @@
 
 \usepackage{cmap}
 \usepackage[a5paper,margin=1.5cm,noheadfoot]{geometry}
+\usepackage[pdftex,unicode]{hyperref}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{blindtext}
 \usepackage{mathtools}
 \usepackage{framed}
+
+
+\def\letus{%
+	\mathord{\setbox0=\hbox{$\exists$}%
+		\hbox{\kern 0.125\wd0%
+			\vbox to \ht0{%
+				\hrule width 0.75\wd0%
+				\vfill%
+				\hrule width 0.75\wd0}%
+			\vrule height \ht0%
+			\kern 0.125\wd0}%
+	}%
+}
 
 \author{Дмитрий Гутман, Евгений Гужихин}
 \title{Алгоритмы решения контрольных по дифференциальным уравнениям, 2 курс, 1 и 2 семестр ФПМК}
@@ -73,7 +87,21 @@
 				\item Найти $ m $ (сумма степеней всех слагаемых слева и справа должна совпадать).
 			\end{enumerate}
 
-		\subsection{Множитель $ \mu $}
+		\subsection{Интегрирующий множитель}
+			Некоторые методы определения интегрирующего множителя:
+			\begin{enumerate}
+				\item \underline{Метод последовательного выделения дифференциала.} Аналогичен методу выделения полного дифференциала для уравнений в полных дифференциалах. Только здесь полный дифференциал удается выделить, умножая уравнение на множители.
+				\item \underline{Метод группировки членов уравнения.}
+					\begin{enumerate}
+						\item $ \letus p(x,y)dx + q(x,y)dy = 0 = (p_1dx + y_1dy) + p_2dx + q_2dy + \ldots, $
+						\item $ \letus \exists M_1: M_1p_1dx + M_1q_1dy = dU_1. $
+						\item Подбираем $ \phi(U_1): M_1\phi(U_1)(p_2dx + q_2dy) = dU_2, $
+						\item $ \ldots $
+					\end{enumerate}
+				\item \underline{Определение интегрирующего множителя заданного вида.}
+
+
+			\end{enumerate}
 
 		\subsection{Уравнение Риккати}
 			\label{Riccati}
@@ -110,7 +138,7 @@
 			$$ F(x,y,y\prime) = 0 $$
 			Два способа решения:
 			\begin{enumerate}
-				\item Привести к $ y\prime = f_i(x,y), i=1,2,... $. Получится одно или несколько уравнений такого вида, каждое нужно решить;
+				\item Привести к $ y\prime = f_i(x,y), i=1,2,\ldots $. Получится одно или несколько уравнений такого вида, каждое нужно решить;
 				
 				\item Метод введения параметра:
 					\begin{enumerate}
@@ -123,18 +151,18 @@
 			\end{enumerate}
 
 		\subsection{Уравнение, неразрешенное относительно производной $n$-ого порядка}
-			$$ F(x,y,y\prime,...,y^{(n)}) = 0 $$
+			$$ F(x,y,y\prime,\ldots,y^{(n)}) = 0 $$
 			Если:
 			\begin{enumerate}
-				\item Нет $ y,y\prime,...,y^{(k-1)} \Rightarrow y^{(k)} := z(x) $
+				\item Нет $ y,y\prime,\ldots,y^{(k-1)} \Rightarrow y^{(k)} := z(x) $
 				
-				\item Нет $ x \Rightarrow y\prime:=p(y), y\prime\prime:=p\prime*p, ... $
+				\item Нет $ x \Rightarrow y\prime:=p(y), y\prime\prime:=p\prime*p, \ldots $
 				
-				\item $ \frac{d}{dx}\Phi(x, y, ..., y(n-1))=0 \Rightarrow (x, y, y\prime, ..., y^{(n-1)}) = C_1 \Rightarrow ... $
+				\item $ \frac{d}{dx}\Phi(x, y, \ldots, y(n-1))=0 \Rightarrow (x, y, y\prime, \ldots, y^{(n-1)}) = C_1 \Rightarrow \ldots $
 				
-				\item Однородное относительно $ y,y\prime,...,y^{(n)} $ (т.е. не меняется при замене $ y := ky, y\prime:=ky\prime, ...) \Rightarrow y\prime:=yz(x) $
+				\item Однородное относительно $ y,y\prime,\ldots,y^{(n)} $ (т.е. не меняется при замене $ y := ky, y\prime:=ky\prime, \ldots) \Rightarrow y\prime:=yz(x) $
 				
-				\item Обобщенно-однородное (т.е. не меняется при замене $ x:=kx, y:=k^m y, y\prime:=k^{m-1}y\prime, y\prime\prime:=k^{m-2}y\prime\prime, ...\Rightarrow x:=e^t, y:=z(t)e^{mt}, m - ? $
+				\item Обобщенно-однородное (т.е. не меняется при замене $ x:=kx, y:=k^m y, y\prime:=k^{m-1}y\prime, y\prime\prime:=k^{m-2}y\prime\prime, \ldots\Rightarrow x:=e^t, y:=z(t)e^{mt}, m - ? $
 			\end{enumerate}
 
 		\subsection{Линейное неоднородное уравнение с постоянными коэффициентами}
@@ -147,16 +175,16 @@
 					\begin{enumerate}
 						\item Метод Неопределенных Коэффициентов
 							\begin{enumerate}
-								\item Если $ \phi(x) =e^{px}(A_0x^s+...+A_s) \Rightarrow $
-								\begin{enumerate}
-									\item Если $p$ - не корень характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(B_0x^s+...+B_s) $, где $B_i$ - неопределенные коэффициенты
-									\item Если $p$ - корень характеристического уравнения кратности $d \Rightarrow \hat y(x) = x^\alpha e^{px}(B_0x^s+...+B_s)$, где $B_i$ - неопределенные коэффициенты
-								\end{enumerate}
+								\item Если $ \phi(x) =e^{px}(A_0x^s+\ldots+A_s) \Rightarrow $
+									\begin{enumerate}
+										\item Если $p$ - не корень характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(B_0x^s+\ldots+B_s) $, где $B_i$ - неопределенные коэффициенты
+										\item Если $p$ - корень характеристического уравнения кратности $d \Rightarrow \hat y(x) = x^\alpha e^{px}(B_0x^s+\ldots+B_s)$, где $B_i$ - неопределенные коэффициенты
+									\end{enumerate}
 								\item Если $ \phi(x) = e^{px}(Q_s(x)cos(qx)+P_s(x)sin(qx)) $, где один из многочленов $Q_s$, $P_s$ имеет степень $s$, а другой $\leq s \Rightarrow$
-								\begin{enumerate}
-									\item Если $p\pm iq$ - не корни характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $
-									\item Если piq - корни характеристического уравнения $ \Rightarrow \hat y(x) = x^\alpha e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $, где $Q_s$, $P_s$ - многочлены степени $s$ с неопределенными коэффициентами
-								\end{enumerate}
+									\begin{enumerate}
+										\item Если $p\pm iq$ - не корни характеристического уравнения $ \Rightarrow \hat y(x) = e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $
+										\item Если $p\pm iq$ - корни характеристического уравнения $ \Rightarrow \hat y(x) = x^\alpha e^{px}(\overline{Q_s}(x)cos(qx)+\overline{P_s}(x)sin(qx)) $, где $Q_s$, $P_s$ - многочлены степени $s$ с неопределенными коэффициентами
+									\end{enumerate}
 							\end{enumerate}
 
 						\item Метод вариации произвольных постоянных: решить СЛУ:
@@ -164,7 +192,7 @@
 								\begin{cases}
 									\sum\limits^n_{i=0}C\prime_i y_i = 0,\\
 									\sum\limits^n_{i=0}C\prime_i y\prime_i = 0,\\
-									...,\\
+									\ldots,\\
 									\sum\limits^n_{i=0}C\prime_i y^{n-2}_i = 0,\\
 									\sum\limits^n_{i=0}C\prime_i y^{n-1}_i = \phi(x).
 								\end{cases}
@@ -173,7 +201,7 @@
 			\end{enumerate}
 
 		\subsection{Уравнение Эйлера}
-			$$ x^ny^{(n)} + a_{n-1}x^{n-1}y^{(n-1)} + ... + a_1xy\prime + a_0y = 0 $$, где коэффициенты $ a_{n-1},...,a_1,a_0 $ — постоянные действительные числа.
+			$$ x^ny^{(n)} + a_{n-1}x^{n-1}y^{(n-1)} + \ldots + a_1xy\prime + a_0y = 0 $$, где коэффициенты $ a_{n-1},\ldots,a_1,a_0 $ — постоянные действительные числа.
 			Если функция $y(x)$ — решение уравнения Эйлера, то функция $Cy(x)$ тоже является решением уравнения.
 			Уравнение Эйлера заменой $ x = e^t $ сводится к \underline{линейному однородному уравнению с постоянными коэффициентами} \ref{LinearNonhomogeneous}.
 
@@ -249,7 +277,7 @@
 					\end{array}
 				\right),
 			\end{equation}
-			где $t$ - независимая переменная, $x_i(t)$ - неизвестные функции, $a_{ij}(i,j=1,\ldots,n)$ - постоянные коэффициенты, $f_i(t)$ - заданные функции. Функции $x_i(t)$, $f_i(t)$ и коэффициенты $a_{ij}$ могут принимать как действительные, так и комплексные значения. 
+			где $t$ - независимая переменная, $x_i(t)$ - неизвестные функции, $a_{ij}(\forall i,j=\overline{1,n})$ - постоянные коэффициенты, $f_i(t)$ - заданные функции. Функции $x_i(t)$, $f_i(t)$ и коэффициенты $a_{ij}$ могут принимать как действительные, так и комплексные значения. 
 			\begin{framed}
 				$ \mathbf{X}\left( t \right) = {\mathbf{X}_0}\left( t \right) + {\mathbf{X}_1}\left( t \right),$ где \par
 				$ \mathbf{X}_0(t) $ - общее решение соответствующей однородной системы \par
