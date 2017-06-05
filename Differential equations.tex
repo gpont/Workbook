@@ -38,9 +38,9 @@
 		\subsection{Однородное уравнение}
 			\label{Homogeneous}
 			\begin{enumerate}
-				\item 
+				\item
 					$$ y\prime=f(\frac{x}{y}) \eqno(1.1.1) $$ или $$ M(x,y)dx+N(x,y)dy=0 \eqno(1.1.2) $$,
-					где $ M(x,y) $ и $ N(x,y) $ — однородные(т.е $ f(kx) = k^mf(x) $) функции одной и той же степени.
+					где $ M(x,y) $ и $ N(x,y) $ — однородные (т.е $ f(kx) = k^mf(x) $, где $ m $ — степень функции) функции одной и той же степени.
 					\begin{enumerate}
 						\item Сделать замену $ y = tx $;
 						\item Решить, как уравнение с разделяющимися переменными.
@@ -67,8 +67,27 @@
 			$$ y\prime + a(x)y = b(x)y^n, (n\neq1) \eqno(2) $$
 			\begin{enumerate}
 				\item Обе части разделить на $ y^n $;
-				\item Сделать замену $ z = y^{1-n} $, получится линейное дифференциальное уравнение I порядка \eqref{Linear}
+				\item Сделать замену $ z = 1/y^{1-n} $, получится линейное дифференциальное уравнение I порядка \eqref{Linear}
 			\end{enumerate}
+
+			\subsubsection{Линейное дифференциальное уравнение I порядка}
+				\label{Linear}
+				$$ y\prime + a(x)y = f(x) \eqno(4) $$
+				\begin{enumerate}
+					\item Метод интегрирующего множителя
+						\begin{enumerate}
+							\item Найти интегрирующий множитель $ u(x) = e^{\int a(x)dx} $;
+							\item $ y = \frac{\int u(x)f(x)dx + C}{u(x)} $.
+						\end{enumerate}
+
+					\item Метод вариации произвольно постоянной
+						\begin{enumerate}
+							\item Решить соответствующее однородное уравнение
+							\item Сделать замену $ C $ на $ C(x) $, где $ C(x)-? $;
+							\item Найти $ C(x) $;
+							\item Подставить $ C(x) $ в исходное неоднородное.
+						\end{enumerate}
+				\end{enumerate}
 
 		\subsection{Уравнение в полных дифференциалах}
 			\label{Full_Diff}
@@ -110,25 +129,6 @@
 				\item Подбором найти частное решение $ y_1 $;
 				\item Сделать замену $ y = y_1 + u $, получится уравнение Бернулли \eqref{Bernulli};
 				\item Полученное уравнение можно привести к линейному \eqref{Linear} заменой $ z = \frac{1}{u} $.
-			\end{enumerate}
-
-		\subsection{Линейное дифференциальное уравнение I порядка}
-			\label{Linear}
-			$$ y\prime + a(x)y = f(x) \eqno(4) $$
-			\begin{enumerate}
-				\item Метод интегрирующего множителя
-					\begin{enumerate}
-						\item Найти интегрирующий множитель $ u(x) = e^{\int a(x)dx} $;						
-						\item $ y = \frac{\int u(x)f(x)dx + C}{u(x)} $.
-					\end{enumerate}
-
-				\item Метод вариации произвольно постоянной
-					\begin{enumerate}
-						\item Решить соответствующее однородное уравнение
-						\item Сделать замену $ C $ на $ C(x) $, где $ C(x)-? $;
-						\item Найти $ C(x) $;
-						\item Подставить $ C(x) $ в исходное неоднородное. 
-					\end{enumerate}
 			\end{enumerate}
 
 		\newpage
@@ -290,12 +290,12 @@
 				\item Метод Эйлера(при помощи характеристического уравнения) \par
 				\begin{enumerate}
 					\item Найти собственные значения $ \lambda_i $ из характеристического уравнение системы: $ \det \left( {A - \lambda I} \right) = 0 $;
-					
+
 					\item Найти собственные вектора из уравнения $ \left( {A - {\lambda _i}I} \right){\mathbf{V}_i} = \mathbf{0} $;
 
 					\item Решение: $ \mathbf{X}(t) = e^{\lambda t}\mathbf{V} $.
 					\begin{framed}
-						В случае $s_i = k_i = 1$, общее решение: 
+						В случае $s_i = k_i = 1$, общее решение:
 						\begin{equation}
 							\mathbf{X}(t) = \left(
 								\begin{array}{*{20}{c}}
