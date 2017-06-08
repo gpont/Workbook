@@ -1,0 +1,136 @@
+\documentclass[a5paper,10pt]{article}
+
+\usepackage{cmap}
+\usepackage[a5paper,margin=1.5cm,noheadfoot]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{blindtext}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{listings}
+
+\author{Евгений Гужихин}
+\title{Алгоритмы и методы программирования, 2 курс, 1 семестр ФПМК, 2 контрольная}
+\date{\today}
+
+\begin{document}
+
+	\maketitle
+
+	\tableofcontents{}
+	\newpage
+
+	\section{Сортировка Хоара (Quicksort)}
+		\subsection{Описание}
+			Общая идея алгоритма:
+			\begin{enumerate}
+				\item Выбрать из массива элемент, называемый опорным. Это может быть любой из элементов массива.
+				\item Сравнить все остальные элементы с опорным и переставить их в массиве так, чтобы разбить массив на два непрерывных отрезка: "меньшие опорного", "больше".
+				\item Для отрезков "меньших" и "больших" значений выполнить рекурсивно ту же последовательность операций, если длина отрезка больше единицы.
+			\end{enumerate}
+		
+		\subsection{Алгоритм}
+			\begin{lstlisting}[frame=single]
+algorithm quicksort(A, lo, hi) is
+  if lo < hi then
+	p := partition(A, lo, hi)
+	quicksort(A, lo, p – 1)
+	quicksort(A, p, hi)
+
+algorithm partition(A, lo, hi) is
+  pivot := get_pivot(A, lo, hi)
+  i := lo
+  j := hi    
+  while i < j do
+	while A[i] < pivot do
+	  i := i + 1 
+	while A[j] > pivot do
+	  j := j - 1 
+	if i <= j then
+	  swap A[i] with A[j]
+  return i + 1
+			\end{lstlisting}
+			Предполагается, что массив A передаётся по ссылке, то есть сортировка происходит "на том же месте", а неописанная функция $get\_pivot$ возвращает значение опорного элемента.
+
+		\subsection{Выбор опорного элемента}
+			\begin{enumerate}
+				\item $ pivot = (max-min)/2 $, если извесны $ min $ и $ max $;
+				\item $ pivot = a[(int)(N/2)] $ - выбор среднего элемента;
+				\item $ pivot = a[(int)(rand()*N)] $ - выбор случайного элемента.
+			\end{enumerate}
+
+		\subsection{Реализация на C}
+			\begin{lstlisting}[frame=single,language=C]
+template < class T >
+void quickSort(T* a, long N) {
+  long i = 0, j = N-1;
+  T temp, p;
+
+  p = a[ N>>1 ]; // pivot
+
+  // partition
+  do {
+	while ( a[i] < p ) i++;
+	while ( a[j] > p ) j--;
+
+	if (i <= j) {
+	  temp = a[i]; a[i] = a[j]; a[j] = temp;
+	  i++; j--;
+	}
+  } while ( i<=j );
+
+  // recursion
+  if ( j > 0 ) quickSort(a, j);
+  if ( N > i ) quickSort(a+i, N-i);
+}
+			\end{lstlisting}
+
+		\subsection{Оценка}
+			\begin{enumerate}
+				\item \textbf{Лучший случай:} $ O(n \log n) $
+				\item \textbf{Худший случай:} $ O(n^2) $
+			\end{enumerate}
+
+	\section{Поиск медианы}
+		\subsection{Описание}
+		\subsection{Алгоритм}
+		\subsection{Реализация}
+		\subsection{Оценка}
+
+	\section{Поразрядная сортировка (Radixsort)}
+		\subsection{Описание}
+			Рекурсивная сортировка, числа сортируются по разрядам. Cначала сортируются младшие разряды, затем старшие.
+
+		\subsection{Реализация на С}
+			\begin{lstlisting}[frame=single,language=C]
+template < class T >
+void radixSort(T* a, int left, int right, int radix) {
+  if (left >= right || radix < 0) return;
+  int mask = 1 << radix, i = left, j = right;
+
+  // partition
+  while (i <= j) {
+	while (i <= j && !(a[i] & mask)) ++i;
+	while (i <= j && (a[j] & mask)) --j;
+	if (i < j)
+	  swap(i++, j--);
+  };
+
+  // recursion
+  if (left < j) RadixSort(a, left, j, radix-1);
+  if (i < right) RadixSort(a, i, right, radix-1);
+}
+			\end{lstlisting}
+
+		\subsection{Оценка}
+			\begin{enumerate}
+				\item \textbf{Лучший случай:} $ O(n \log n) $
+				\item \textbf{Худший случай:} $ O(n^2) $
+			\end{enumerate}
+			
+
+\end{document}
