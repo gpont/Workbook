@@ -8,6 +8,10 @@
 ```
 pdflatex Differential\ equations.tex
 ```
+Так же можно использовать Makefile, созданный для тестов(использует evince):
+```
+make f="filename"
+```
 P.S. Mactex при установке не добавляет себя в PATH, поэтому необходимо сделать это вручную:
 ```
 export PATH=/Library/TeX/Root/bin/x86_64-darwin:$PATH
