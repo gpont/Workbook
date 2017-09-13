@@ -34,19 +34,28 @@
 	\tableofcontents{}
 	\newpage
 
+	\section{Простейшие типы уравнений}
+		\subsection{Уравнения с разделяющимися переменными}
+			\label{SeparatingVariables}
+			$$ \phi_{1}(x)\psi_1(y)dx=\phi_2(x)\psi_2(y)dy $$
+			\begin{enumerate}
+				\item Решить $ \frac{\phi_1(x)}{\phi_2(x)}dx = \frac{\psi_2(y)}{\psi_1(y)}dy $
+				\item Решить $ \phi_2(x)\psi_1(y) = 0 $ и подставить в исходное. Проверить, является ли решением.
+			\end{enumerate}
+
 	\section{I контрольная работа}
 		\subsection{Однородное уравнение}
 			\label{Homogeneous}
 			\begin{enumerate}
 				\item
-					$$ y\prime=f(\frac{x}{y}) \eqno(1.1.1) $$ или $$ M(x,y)dx+N(x,y)dy=0 \eqno(1.1.2) $$,
+					$$ y^{\prime}=f(\frac{x}{y}) \eqno(1.1.1) $$ или $$ M(x,y)dx+N(x,y)dy=0 \eqno(1.1.2) $$,
 					где $ M(x,y) $ и $ N(x,y) $ — однородные (т.е $ f(kx) = k^mf(x) $, где $ m $ — степень функции) функции одной и той же степени.
 					\begin{enumerate}
 						\item Сделать замену $ y = tx $;
-						\item Решить, как уравнение с разделяющимися переменными.
+						\item Решить, как уравнение с разделяющимися переменными\eqref{SeparatingVariables}.
 					\end{enumerate}
 
-				\item $$ y\prime=f\left(\cfrac{a_1x + b_1y + c_1}{ax + by + c}\right) \eqno(1.2) $$
+				\item $$ y^{\prime}=f\left(\cfrac{a_1x + b_1y + c_1}{ax + by + c}\right) \eqno(1.2) $$
 					\begin{enumerate}
 						\item если
 							\begin{equation}
@@ -64,7 +73,7 @@
 
 		\subsection{Уравнение Бернулли}
 			\label{Bernulli}
-			$$ y\prime + a(x)y = b(x)y^n, (n\neq1) \eqno(2) $$
+			$$ y^{\prime} + a(x)y = b(x)y^n, (n\neq1) \eqno(2) $$
 			\begin{enumerate}
 				\item Обе части разделить на $ y^n $;
 				\item Сделать замену $ z = 1/y^{1-n} $, получится линейное дифференциальное уравнение I порядка \eqref{Linear}
@@ -72,7 +81,7 @@
 
 			\subsubsection{Линейное дифференциальное уравнение I порядка}
 				\label{Linear}
-				$$ y\prime + a(x)y = f(x) \eqno(4) $$
+				$$ y^{\prime} + a(x)y = f(x) \eqno(4) $$
 				\begin{enumerate}
 					\item Метод интегрирующего множителя
 						\begin{enumerate}
@@ -91,12 +100,12 @@
 
 		\subsection{Уравнение в полных дифференциалах}
 			\label{Full_Diff}
-			$$ F\prime_xdx + F\prime_ydy = 0 \eqno(3) $$
+			$$ F^{\prime}_xdx + F^{\prime}_ydy = 0 \eqno(3) $$
 			\begin{enumerate}
-				\item Доказать, что уравнение является уравнением в полных дифференциалах: $ F\prime\prime_{xy} = F\prime\prime_{yx} $;
-				\item Восстановить $ F\prime_x \implies F = \int F\prime_xdx $, где $ C = \varphi(y) $ — некоторая пока неизвестная функция;
-				\item Продифференцировать $ F $ по $ y $ $ (\varphi(y) \implies \varphi\prime_y(y)) $;
-				\item Приравнять $ F\prime_y $ к результату выше и найти значение $ \varphi(y) $;
+				\item Доказать, что уравнение является уравнением в полных дифференциалах: $ F^{\prime\prime}_{xy} = F^{\prime\prime}_{yx} $;
+				\item Восстановить $ F^{\prime}_x \implies F = \int F^{\prime}_xdx $, где $ C = \varphi(y) $ — некоторая пока неизвестная функция;
+				\item Продифференцировать $ F $ по $ y $ $ (\varphi(y) \implies \varphi^{\prime}_y(y)) $;
+				\item Приравнять $ F^{\prime}_y $ к результату выше и найти значение $ \varphi(y) $;
 				\item Подставить $ \varphi(y) $ в $ F $ из пункта 2.
 			\end{enumerate}
 
@@ -124,7 +133,7 @@
 
 		\subsection{Уравнение Риккати}
 			\label{Riccati}
-			$$ y\prime + a(x)y + b(x)y^2 = c(x) \eqno(3) $$
+			$$ y^{\prime} + a(x)y + b(x)y^2 = c(x) \eqno(3) $$
 			\begin{enumerate}
 				\item Подбором найти частное решение $ y_1 $;
 				\item Сделать замену $ y = y_1 + u $, получится уравнение Бернулли \eqref{Bernulli};
@@ -135,34 +144,34 @@
 
 	\section{II Контрольная работа}
 		\subsection{Уравнение, неразрешенное относительно производной}
-			$$ F(x,y,y\prime) = 0 $$
+			$$ F(x,y,y^{\prime}) = 0 $$
 			Два способа решения:
 			\begin{enumerate}
-				\item Привести к $ y\prime = f_i(x,y), i=1,2,\ldots $. Получится одно или несколько уравнений такого вида, каждое нужно решить;
+				\item Привести к $ y^{\prime} = f_i(x,y), i=1,2,\ldots $. Получится одно или несколько уравнений такого вида, каждое нужно решить;
 				
 				\item Метод введения параметра:
 					\begin{enumerate}
-						\item Ввести параметр $ p = y\prime = \frac{dy}{dx} $, получим $ y = f(x,p) $;
+						\item Ввести параметр $ p = y^{\prime} = \frac{dy}{dx} $, получим $ y = f(x,p) $;
 						\item Взять полный дифференциал от обоих частей и заменить $ dy = pdx $, получим $ M(x,p)dx+N(x,p)dp=0 $.
 					\end{enumerate}
 				Если решение найдено в виде $ x=\phi(p) $, то получим $ x=\phi(p), y=f(\phi(p),p) $.
-				\item $ y(x) = xy\prime+\psi(y\prime) $ - \underline{Уравнение Клеро}: Замена: $ y\prime:=p $.
-				\item $ y(x) = x\phi(y\prime)+\psi(y\prime) $ - \underline{Уравнение Лагранжа}: $ y\prime:=p $.
+				\item $ y(x) = xy^{\prime}+\psi(y^{\prime}) $ - \underline{Уравнение Клеро}: Замена: $ y^{\prime}:=p $.
+				\item $ y(x) = x\phi(y^{\prime})+\psi(y^{\prime}) $ - \underline{Уравнение Лагранжа}: $ y^{\prime}:=p $.
 			\end{enumerate}
 
 		\subsection{Уравнение, неразрешенное относительно производной $n$-ого порядка}
-			$$ F(x,y,y\prime,\ldots,y^{(n)}) = 0 $$
+			$$ F(x,y,y^{\prime},\ldots,y^{(n)}) = 0 $$
 			Если:
 			\begin{enumerate}
-				\item Нет $ y,y\prime,\ldots,y^{(k-1)} \Rightarrow y^{(k)} := z(x) $
+				\item Нет $ y,y^{\prime},\ldots,y^{(k-1)} \Rightarrow y^{(k)} := z(x) $
 				
-				\item Нет $ x \Rightarrow y\prime:=p(y), y\prime\prime:=p\prime*p, \ldots $
+				\item Нет $ x \Rightarrow y^{\prime}:=p(y), y^{\prime\prime}:=p^{\prime}*p, \ldots $
 				
-				\item $ \frac{d}{dx}\Phi(x, y, \ldots, y(n-1))=0 \Rightarrow (x, y, y\prime, \ldots, y^{(n-1)}) = C_1 \Rightarrow \ldots $
+				\item $ \frac{d}{dx}\Phi(x, y, \ldots, y(n-1))=0 \Rightarrow (x, y, y^{\prime}, \ldots, y^{(n-1)}) = C_1 \Rightarrow \ldots $
 				
-				\item Однородное относительно $ y,y\prime,\ldots,y^{(n)} $ (т.е. не меняется при замене $ y := ky, y\prime:=ky\prime, \ldots) \Rightarrow y\prime:=yz(x) $
+				\item Однородное относительно $ y,y^{\prime},\ldots,y^{(n)} $ (т.е. не меняется при замене $ y := ky, y^{\prime}:=ky^{\prime}, \ldots) \Rightarrow y^{\prime}:=yz(x) $
 				
-				\item Обобщенно-однородное (т.е. не меняется при замене $ x:=kx, y:=k^m y, y\prime:=k^{m-1}y\prime, y\prime\prime:=k^{m-2}y\prime\prime, \ldots\Rightarrow x:=e^t, y:=z(t)e^{mt}, m - ? $
+				\item Обобщенно-однородное (т.е. не меняется при замене $ x:=kx, y:=k^m y, y^{\prime}:=k^{m-1}y^{\prime}, y^{\prime\prime}:=k^{m-2}y^{\prime\prime}, \ldots\Rightarrow x:=e^t, y:=z(t)e^{mt}, m - ? $
 			\end{enumerate}
 
 		\subsection{Линейное неоднородное уравнение с постоянными коэффициентами}
@@ -190,18 +199,18 @@
 						\item Метод вариации произвольных постоянных: решить СЛУ:
 							\begin{equation*}
 								\begin{cases}
-									\sum\limits^n_{i=0}C\prime_i y_i = 0,\\
-									\sum\limits^n_{i=0}C\prime_i y\prime_i = 0,\\
+									\sum\limits^n_{i=0}C^{\prime}_i y_i = 0,\\
+									\sum\limits^n_{i=0}C^{\prime}_i y^{\prime}_i = 0,\\
 									\ldots,\\
-									\sum\limits^n_{i=0}C\prime_i y^{n-2}_i = 0,\\
-									\sum\limits^n_{i=0}C\prime_i y^{n-1}_i = \phi(x).
+									\sum\limits^n_{i=0}C^{\prime}_i y^{n-2}_i = 0,\\
+									\sum\limits^n_{i=0}C^{\prime}_i y^{n-1}_i = \phi(x).
 								\end{cases}
 							\end{equation*}
 					\end{enumerate}
 			\end{enumerate}
 
 		\subsection{Уравнение Эйлера}
-			$$ x^ny^{(n)} + a_{n-1}x^{n-1}y^{(n-1)} + \ldots + a_1xy\prime + a_0y = 0 $$, где коэффициенты $ a_{n-1},\ldots,a_1,a_0 $ — постоянные действительные числа.
+			$$ x^ny^{(n)} + a_{n-1}x^{n-1}y^{(n-1)} + \ldots + a_1xy^{\prime} + a_0y = 0 $$, где коэффициенты $ a_{n-1},\ldots,a_1,a_0 $ — постоянные действительные числа.
 			Если функция $y(x)$ — решение уравнения Эйлера, то функция $Cy(x)$ тоже является решением уравнения.
 			Уравнение Эйлера заменой $ x = e^t $ сводится к \underline{линейному однородному уравнению с постоянными коэффициентами} \ref{LinearNonhomogeneous}.
 
@@ -209,8 +218,8 @@
 
 	\section{III контрольная работа}
 		\subsection{Краевые задачи}
-			$$ a_0(x)y\prime\prime + a_1(x)y\prime + a_2(x)y = f(x), \ x_0 \leq x \leq x_1 $$
-			$$ \alpha y\prime(x_0) + \beta y(x_0) = 0, \ \gamma y\prime(x_1) + \delta y(x_1) = 0 $$
+			$$ a_0(x)y^{\prime\prime} + a_1(x)y^{\prime} + a_2(x)y = f(x), \ x_0 \leq x \leq x_1 $$
+			$$ \alpha y^{\prime}(x_0) + \beta y(x_0) = 0, \ \gamma y^{\prime}(x_1) + \delta y(x_1) = 0 $$
 			\begin{enumerate}
 				\item Решение краевой задачи
 					\begin{enumerate}
@@ -222,12 +231,12 @@
 					\underline{Функция Грина $ G(x,s) $} - функция, определенная при $ x_0 \leq x \leq x_1, x_0 < s < x_1 $, и при каждом фиксированном $ s \in [x_0,x_1] $, обладающая свойствами:
 					\begin{enumerate}
 						\item при $ x \neq s $ она удовлетворяет уравнению
-						$$ a_0(x)y\prime\prime + a_1(x)y\prime + a_2(x)y = f(x), \ x_0 \leq x \leq x_1; $$
+						$$ a_0(x)y^{\prime\prime} + a_1(x)y^{\prime} + a_2(x)y = f(x), \ x_0 \leq x \leq x_1; $$
 
 						\item при $ x = x_0 $ и $ x = x_1 $ она удовлетворяет заданным краевым условиям;
 
 						\item при $ x = s $ она непрерывна по $x$, а ее производная по $x$ имеет скачек, равный $ \frac{1}{a_0(s)} $, т.е.
-						$$ G(s+1,s) = G(s-0,s), G_x\prime\bigg|_{x=s+0} = G_x\prime\bigg|_{x=s-0}+\frac{1}{a_0(s)}. $$
+						$$ G(s+1,s) = G(s-0,s), G_x^{\prime}\bigg|_{x=s+0} = G_x^{\prime}\bigg|_{x=s-0}+\frac{1}{a_0(s)}. $$
 					\end{enumerate}
 				\end{framed}
 
@@ -242,13 +251,13 @@
 								by_2(x) \ (s \leq x \leq x_1.
 							\end{cases}
 						\end{equation*}
-						Функции $a,b$ зависят от $s$ и определяются из требования, чтобы функция $G$ удовлетворяла условиям: $ by_2(s) = ay_1(s), by_2\prime(s) = ay_1\prime(s) + \frac{1}{a_0(s)} $.
+						Функции $a,b$ зависят от $s$ и определяются из требования, чтобы функция $G$ удовлетворяла условиям: $ by_2(s) = ay_1(s), by_2^{\prime}(s) = ay_1^{\prime}(s) + \frac{1}{a_0(s)} $.
 						\item Если $ \exists G $, то решение: $ y(x) = \int_{x_0}^{x_1} G(x,s)f(s)ds $.
 					\end{enumerate}
 			\end{enumerate}
 
 		\subsection{Решение линейной неоднородной системы дифференциальных уравнений}
-			$$ \frac{dx_i}{dt} = x\prime_i = \sum\limits_{j=1}^n a_{ij}x_j(t) + f_i(t), \; i = 1,2,\ldots,n, $$
+			$$ \frac{dx_i}{dt} = x^{\prime}_i = \sum\limits_{j=1}^n a_{ij}x_j(t) + f_i(t), \; i = 1,2,\ldots,n, $$
 			Или
 			$$ \mathbf{X}'\left( t \right) = A\mathbf{X}\left( t \right) + \mathbf{f}\left( t \right), $$
 			\begin{equation}
