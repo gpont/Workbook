@@ -1,0 +1,95 @@
+\documentclass[a5paper,10pt]{article}
+
+\usepackage{cmap}
+\usepackage[a5paper,margin=1.5cm,noheadfoot]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{blindtext}
+\usepackage{mathtools}
+
+\author{Евгений Гужихин}
+\title{Базы данных(конспект), 3 курс, 1 семестр ФПМК}
+\date{\today}
+
+\begin{document}
+
+	\maketitle
+	\tableofcontents{}
+	\newpage
+
+	\section{1 семинар}
+		\subsection{Реляционная алгебра}
+			\paragraph{Определение отношения}	
+				\textbf{Отношение} - подмножество декатового произведения $ D_1 * D_2 * ... * D_n $
+				Множества $ D_i $ - \textbf{домены}
+				Элементы декартова произведения $ d_1 * d_2 * ... * d_n $ - \textbf{кортежи}
+				Число $ n $ - \textbf{степень отношения}
+				Количество кортежей $ (|R|) $ - \textbf{мощность кортежа}
+
+			\paragraph{Основные компоненты реляционного отношения}
+
+			\paragraph{Свойства отношений}
+				\begin{itemize}
+					\item Отсутствие кортежей-дубликатов
+					\item Отсутствие упорядоченности кортежей
+					\item Отсутствие упорядоченности атрибутов
+					\item Атомарность значений атрибутов
+				\end{itemize}
+
+		\subsection{}
+			\paragraph{\textbf{S}tructured \textbf{Q}uery \textbf{L}anguage}
+				\begin{itemize}
+					\item \textbf{DDL} - Data Defenition Language --- язык определения данных
+					\item \textbf{DML} - Data Manupulation Language --- язык манипулирования данными
+				\end{itemize}
+
+			\paragraph{Select}
+				\textbf{DISTINCT} - зло на проде(долгое)
+				\textbf{SELECT [ALL | DISTINCT]} <имя\_столбца|перечень\_столбцов>
+				\textbf{FROM} <имя\_таблицы>, ...
+					\textbf{JOIN} <имя\_таблицы> \textbf{ON} <условие>
+				\[ \textbf{WHERE} <условие> \]
+				\[ \textbf{GROUP BY} <имя\_столбца> \]
+				\[ \textbf{HAVING} <условие> \]
+				\[ \textbf{ORDER BY} <имя\_столбца>, ... \[\] \]
+
+			\paragraph{Логические операции и операции сравнения}
+				\textbf{LIKE} - Поиск по заданному шаблону
+				\textbf{BETWEEN} - Принадлежность диапазону
+				\textbf{IN} - Принадлежность списку
+			
+			\paragraph{Поиск по шаблону (\textbf{LIKE})}
+				\% - любое количество символов (в том числе и 0) подряд
+				\_ - любой одиночный символ
+				\textbf{ESCAPE} - поиск специальных символов (\% и \_).
+				ESCAPE определяет символ после которого любой следующий за ним символ интерпретируется как обычный.
+				\underline{Пример:}  
+
+			\paragraph{NULL}
+				\begin{itemize}
+					\item Сравнение: \begin{lstlistening} IS \[NOT\] NULL \end{lstlistening}
+					\item \textbf{NULL} и пустая строка эквивалентны
+				\end{itemize}
+
+		\subsection{Связи}
+			\paragraph{Отношения}
+				\begin{itemize}
+					\item Один к одному (1:1) - "хорошие отношения"
+					\item Один ко многим (1:N) - "плохие отношения"
+					\item Многие ко многим (N:M) - "свободные отношения"
+				\end{itemize}
+			
+			\paragraph{JOIN}
+				\textbf{CROSS JOIN}	- внешнее соединение (декартово произведение элементов нескольких таблиц)
+				\textbf{FULL JOIN} - полное соединение
+				\textbf{INNER JOIN} - внутреннее соединение(отстутствующие связи выкидываются), "пересечение множеств"
+				\textbf{LEFT JOIN} - расширение левой таблицы(левая таблица - главная, из нее данные не выкидываются)
+				\textbf{RIGHT JOIN} - расширение правой таблицы
+
+			\begin{lstlistening}
+				DROP TABLE <table_name>;
+				DELETE FROM ;
+			\end{lstlistening}
+
+\end{document}
