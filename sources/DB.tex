@@ -88,8 +88,161 @@
 				\textbf{RIGHT JOIN} - расширение правой таблицы
 
 			\begin{lstlistening}
-				DROP TABLE <table_name>;
+				DROP TABLE <table\_name>;
 				DELETE FROM ;
 			\end{lstlistening}
+
+			\paragraph{Параметры инициализации}
+				\textbf{NLS\_SESSION\_PARAMETERS} - таблица параметров
+
+				\begin{lstlistening}
+					CASE [expression]
+						WHEN condition\_1 THEN result\_1
+						...
+						WHEN condition\_n THEN result\_n
+						ELSE result\_def
+					END [AS] result
+				\begin{lstlistening}
+				\textbf{AS} - псевдоним
+
+	\section{2 семинар}
+		\subsection{Типы данных}
+			\paragraph{Символьные типы данных}
+				\begin{table}[]
+					\centering
+					\caption{My caption}
+					\label{my-label}
+					\begin{tabular}{lcc}
+					 & Фиксированная длина & Переменная длина \\
+					 Традиционные типы(набор символов базы данных) & CHAR[{N}] & VARCHAR2(N) \\
+					 Юникод(Национальный набор символов) & NCHAR[{N}] & NVARCHAR2(N) \\
+					\end{tabular}
+				\end{table}
+
+				\begin{lstlistening}
+					VARCHAR2 (<макс\_длина> [CHAR | BYTE])
+					CHAR [(<макс\_длина> [CHAR | BYTE])]
+				\begin{lstlistening}
+
+				\textbf{CHAR} - максимальная длина выражается в символах
+				\textbf{BYTE} - максимальная длина выражается в байтах
+
+				\underline{Параметры инициализации:}
+				\begin{enumerate}
+					\item \textbf{NLS\_LENGTH\_SEMANTICS} для измерения максимальной длины
+					\item \textbf{MAX\_SQL\_STRING\_SIZE} максимальный размер строк с Oracle
+				\end{enumerate}
+
+				CAST('123', VARCHAR2(10)) AS BLA
+				CONCAT('abs', 'de') AS A1
+				CONCAT(a, b) = a || b
+				CONCAT('test', NULL) => 'test'
+
+			\paragraph{Числовые типы данных}
+				\textbf{NUMBER [(X,[Y])]} - применяется для хранения целых, чисел с плавующей точкой и т.д.
+				X - всего знаков, Y - знаков после запятой
+
+			\paragraph{Дата и время}
+				\begin{lstlistening}
+					EXTRACT (
+						{ YEAR | MONTH | DAY | HOUR | MINUTE | SECOND }
+						| { TIMEZONE\_HOUR | TIMEZONE\_MINUTE }
+						| { TIMEZONE\_REGION TIMEZONE_ABBR }
+					)
+					FROM ...
+				\end{lstlistening}
+
+			\paragraph{Большие типы данных}
+				BFILE
+				BLOB
+				CLOB
+				NCLOB
+				XMLType
+
+	\section{3 семинар}	
+		\subsection{Подзапросы}
+			\begin{itemize}
+				\item \textbf{Некоррелированные (незаписимые) запросы} - логически выполняются ровно один раз
+				\item \textbf{Коррелированные (связанные) запросы} - отличается от независимых тем, что его значение зависит от переменной, получаемой от внешнего запроса
+			\end{itemize}
+
+			\paragraph{WITH}
+				\begin{framed}
+					Работает иногда быстрее, чем подзапросы.
+				\end{framed}
+				\begin{lstlistening}
+					WITH \[NAME\] as
+					\{
+						SELECT statement
+					\}
+					SELECT \[column list\]
+					FROM \[NAME\]
+				\end{lstlistening}
+			
+			\paragraph{UNION, INTERSECT, MINUS}
+				Работают с таблицами, как с множествами. (Объединение, пересечение, вычитание)
+				\begin{framed}
+					Должно быть одинаковое количество столбцов и одинаковые типы!
+				\end{framed}
+				\textbf{UNION ALL} - не удаляет одинаковые записи
+				\begin{lstlistening}
+					(SELECT ... FROM ... WHERE ...)
+					UNION
+					(SELECT ... FROM ... WHERE ...)
+					ORDER BY raw\_number
+					GROUP BY ...
+					HAVING ...
+				\end{lstlistening}
+
+			\paragraph{Оконные функции}
+				\begin{lstlistening}
+					SELECT PRODUCT\_ID, PRODUCT\_NAME, PRICE,
+						   RANK() OVER(PARTITION BY CATEGORY\_ID ORDER BY PRICE DECS) AS "rank"
+					FROM PRODUCTS;
+				\end{lstlistening}
+
+		\subsection{DDL. Дополнительные элементы СУБД Oracle.}
+			\paragraph{Транзакции}
+				\textbf{Транзакция} - последовательность команд SQL, которую Oracle, интерпретирует как единый рабочий блок.
+				\underline{Основные концепции:}
+				\begin{enumerate}
+					\item \textbf{Атомарность:} любая транзакция будет зафиксирована только полностью
+					\item \textbf{Согласованность:} любая завершенная транзакция фиксирует только допустимые результаты
+					\item \textbf{Изолированность:} каждая транзакция должна быть изолированная от других. (На практике крайне труднодостежимая вещь)
+					\item \textbf{Долговечность:} после получения подтверждения о выполнении транзакции, изменения, вызванные этой транзакцией, не должны быть отменены из-за сбоя системы
+				\end{enumerate}
+				\underline{Команды:}
+				\begin{itemize}
+					\item \textbf{COMMIT} - сохраняет изменения
+					\item \textbf{ROLLBACK} - откатывает изменения
+					\item \textbf{SAVEPOINT} <sp\_name> - устанавливает контрольную точку с заданным именем, которая помечает текущую точку в транзакции
+					\item \textbf{ROLLBACK TO} <sp\_name> - откатывает изменения на контрольную точку
+				\end{itemize}
+
+		\subsection{DDL и DML}
+			\begin{framed}
+				Любая команда DDL завершает текущую транзакцию
+			\end{framed}
+			\paragraph{Создание таблиц}
+				\begin{lstlistening}
+					CREATE TABLE <table\_name>
+					( <raw\_name>, <raw\_type>
+					\[NOT NULL\]
+					\[UNIQUE | PRIMARY KEY\]
+					\[REFERENCES <master\_table\_name> \[<raw\_name\]\]
+					, ... )
+				\end{lstlistening}
+
+			\paragraph{Изменение схемы таблицы}
+				\begin{lstlistening}
+					ALTER TABLE <table\_name> (ADD ... | DROP ... | MODIFY)
+				\end{lstlistening}
+
+			\paragraph{Переименование и удаление таблиц}
+				\begin{lstlistening}
+					RENAME TABLE <table\_name> ON <new\_table\_name>;
+					DROP TABLE <table\_name>;
+				\end{lstlistening}
+				
 
 \end{document}
